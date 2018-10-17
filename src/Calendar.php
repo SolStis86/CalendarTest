@@ -69,14 +69,6 @@ class Calendar implements CalendarInterface
 
     private function shouldHighlightDay(Carbon $day) : bool
     {
-        print_r([
-            'datetime' => $this->datetime->format('Y-m-d'),
-            'previous_week_of_year' => $this->datetime->weekOfYear,
-            'day' => $day->day,
-            'start_of_month_week' => $this->datetime->clone()->startOfMonth()->weekOfYear,
-            'current_day_week_of_year' => $this->datetime->weekOfYear,
-
-        ]);
         return $day->weekOfYear !== $this->datetime->weekOfYear
             && $day->weekOfYear === $this->datetime->clone()->subWeek()->weekOfYear;
     }
